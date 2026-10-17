@@ -1,0 +1,369 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOGUE // PORTFOLIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Syne:wght@500;700;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --teal-electric: #00f0ff;
+            --teal-deep: #00a896;
+            --pink-hot: #ff007f;
+            --pink-neon: #ff66cc;
+            --yellow-acid: #ffee00;
+            --yellow-gold: #ffb703;
+            --text-light: #f4f4f0;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow Backgrounds */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.25), transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+            animation: pulse-glow 8s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.25), transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+            animation: pulse-glow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(30px, -30px); }
+        }
+
+        .wrapper {
+            max-width: 950px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* High-Fashion Editorial Card */
+        .vogue-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Swag Accent Bar */
+        .vogue-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--teal-electric), var(--pink-hot), var(--yellow-acid));
+        }
+
+        /* Editorial Watermark Header */
+        .watermark-tag {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            letter-spacing: 0.1em;
+            pointer-events: none;
+            user-select: none;
+            text-transform: uppercase;
+        }
+
+        /* Top Header Area */
+        .editorial-header {
+            margin-bottom: 3rem;
+        }
+
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-family: 'Syne', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            display: inline-block;
+        }
+
+        .tag-school {
+            background: rgba(0, 240, 255, 0.12);
+            color: var(--teal-electric);
+            border: 1px solid var(--teal-electric);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .tag-status {
+            background: rgba(255, 238, 0, 0.12);
+            color: var(--yellow-acid);
+            border: 1px solid var(--yellow-acid);
+        }
+
+        .main-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .main-title .highlight {
+            background: linear-gradient(135deg, var(--teal-electric) 0%, var(--pink-neon) 50%, var(--yellow-acid) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
+
+        .subtitle {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--pink-neon);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        /* Bio Paragraph */
+        .bio-lead {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #d1d5db;
+            margin-bottom: 3rem;
+            max-width: 780px;
+            border-left: 2px solid var(--teal-electric);
+            padding-left: 1.5rem;
+        }
+
+        .bio-lead span.bold-glow {
+            color: #fff;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Expressive Creative Grid */
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .express-card {
+            position: relative;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        /* Individual Swag Styles for Cards */
+        .card-act {
+            border-bottom: 3px solid var(--pink-hot);
+        }
+        .card-model {
+            border-bottom: 3px solid var(--yellow-acid);
+        }
+        .card-dance {
+            border-bottom: 3px solid var(--teal-electric);
+        }
+
+        .express-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-act:hover { border-color: var(--pink-hot); }
+        .card-model:hover { border-color: var(--yellow-acid); }
+        .card-dance:hover { border-color: var(--teal-electric); }
+
+        .card-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            opacity: 0.4;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .express-card h3 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .card-act h3 { color: var(--pink-neon); }
+        .card-model h3 { color: var(--yellow-acid); }
+        .card-dance h3 { color: var(--teal-electric); }
+
+        .express-card p {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+
+        /* Career & Vision Banner */
+        .vision-banner {
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.15) 0%, rgba(0, 240, 255, 0.15) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2.25rem;
+            position: relative;
+        }
+
+        .vision-banner h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--yellow-acid);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .vision-banner p {
+            font-size: 1.15rem;
+            color: #f3f4f6;
+            line-height: 1.6;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .vision-banner strong {
+            color: var(--teal-electric);
+            font-weight: 600;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .vogue-card {
+                padding: 2.5rem 1.5rem;
+            }
+            .main-title {
+                font-size: 3.2rem;
+            }
+            .watermark-tag {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <article class="vogue-card">
+            <div class="watermark-tag">VOGUE</div>
+
+            <header class="editorial-header">
+                <div class="badge-row">
+                    <span class="tag tag-school">Grayson High School</span>
+                    <span class="tag tag-status">Class of 2026</span>
+                </div>
+                <h1 class="main-title">About <span class="highlight">Me.</span></h1>
+                <p class="subtitle">Performer // Visionary // Storyteller</p>
+            </header>
+
+            <p class="bio-lead">
+                I’m an 11th-grade creative powerhouse balancing high school with an unstoppable drive for the arts. Defined by <span class="bold-glow">expressive energy, bold aesthetics, and performance art</span>, I operate where high fashion meets raw stage presence.
+            </p>
+
+            <div class="creative-grid">
+                <!-- ACTING -->
+                <div class="express-card card-act">
+                    <span class="card-num">01 / DRAMA</span>
+                    <h3>Acting</h3>
+                    <p>Stepping into complex characters, dynamic storytelling, and bringing raw cinematic emotion to both stage and screen.</p>
+                </div>
+
+                <!-- MODELING -->
+                <div class="express-card card-model">
+                    <span class="card-num">02 / STYLE</span>
+                    <h3>Modeling</h3>
+                    <p>High-fashion editorial posing, visual storytelling, and pushing aesthetic boundaries in front of the lens.</p>
+                </div>
+
+                <!-- DANCING -->
+                <div class="express-card card-dance">
+                    <span class="card-num">03 / MOTION</span>
+                    <h3>Dancing</h3>
+                    <p>Expressive movement, rhythm, and high-energy performance art that commands every stage and spotlight.</p>
+                </div>
+            </div>
+
+            <div class="vision-banner">
+                <h3>✦ The Ambition</h3>
+                <p>
+                    Curious about the future of <strong>Entertainment & Communications</strong>. Driven to carve out a distinct lane in media, creative direction, performance, and global cultural influence.
+                </p>
+            </div>
+
+        </article>
+    </div>
+
+</body>
+</html>
